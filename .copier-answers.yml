@@ -1,0 +1,20 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 0.5.1
+_src_path: gh:algorandfoundation/algokit-fullstack-template
+author_email: your@email.tld
+author_name: Your-Name
+cloud_provider: none
+contract_name: hello_world
+deployment_language: typescript
+ide_jetbrains: false
+ide_vscode: true
+preset_name: production
+project_name: wakanda
+python_linter: none
+use_dispenser: true
+use_github_actions: true
+use_python_black: true
+use_python_mypy: true
+use_python_pip_audit: true
+use_python_pytest: true
+
