@@ -1,8 +1,7 @@
-import * as React from 'react'
-import { Box, Divider } from '@mui/material'
-import Typography from '@mui/material/Typography'
+import { Box, Card, Divider, SxProps } from '@mui/material'
 import Modal from '@mui/material/Modal'
-import { Card, SxProps } from '@mui/material'
+import Typography from '@mui/material/Typography'
+import * as React from 'react'
 
 interface VoteInfo {
   columName: string

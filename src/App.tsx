@@ -4,13 +4,17 @@ import { PeraWalletConnect } from '@perawallet/connect'
 import { PROVIDER_ID, ProvidersArray, WalletProvider, useInitializeProviders, useWallet } from '@txnlab/use-wallet'
 import algosdk from 'algosdk'
 import { SnackbarProvider } from 'notistack'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
 import AppCalls from './components/AppCalls'
 import ConnectWallet from './components/ConnectWallet'
 import Transact from './components/Transact'
+import About from './pages/About'
+import Communities from './pages/Communities'
+import Developers from './pages/Developers'
+import Governance from './pages/Governance'
+import Home from './pages/Home'
 import { getAlgodConfigFromViteEnvironment } from './utils/network/getAlgoClientConfigs'
-
-import Stake from '../src/stake/page'
 
 let providersArray: ProvidersArray
 if (import.meta.env.VITE_ALGOD_NETWORK === '') {
@@ -44,6 +48,10 @@ export default function App() {
     setAppCallsDemoModal(!appCallsDemoModal)
   }
 
+  useEffect(() => {
+    console.log(openWalletModal)
+  }, [openWalletModal])
+
   const algodConfig = getAlgodConfigFromViteEnvironment()
 
   const walletProviders = useInitializeProviders({
@@ -57,45 +65,83 @@ export default function App() {
     algosdkStatic: algosdk,
   })
 
+  //   return (
+  //     <SnackbarProvider maxSnack={3}>
+  //       <WalletProvider value={walletProviders}>
+  //         <div className="hero min-h-screen bg-teal-400">
+  //           <div className="hero-content text-center rounded-lg p-6 max-w-md bg-white mx-auto">
+  //             <div className="max-w-md">
+  //               <h1 className="text-4xl">
+  //                 Welcome to <div className="font-bold">AlgoKit 🙂</div>
+  //               </h1>
+  //               <p className="py-6">
+  //                 This starter has been generated using official AlgoKit React template. Refer to the resource below for next steps.
+  //               </p>
+
+  //               <div className="grid">
+  //                 <a
+  //                   data-test-id="getting-started"
+  //                   className="btn btn-primary m-2"
+  //                   target="_blank"
+  //                   href="https://github.com/algorandfoundation/algokit-cli"
+  //                 >
+  //                   Getting started
+  //                 </a>
+
+  //                 <div className="divider" />
+  //                 <button data-test-id="connect-wallet" className="btn m-2" onClick={toggleWalletModal}>
+  //                   Wallet Connection
+  //                 </button>
+
+  //                 {activeAddress && (
+  //                   <button data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}>
+  //                     Transactions Demo
+  //                   </button>
+  //                 )}
+
+  //                 {activeAddress && (
+  //                   <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
+  //                     Contract Interactions Demo
+  //                   </button>
+  //                 )}
+  //               </div>
+
+  //               <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
+  //               <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />
+  //               <AppCalls openModal={appCallsDemoModal} setModalState={setAppCallsDemoModal} />
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </WalletProvider>
+  //     </SnackbarProvider>
+  //   )
+  // }
+
   return (
     <SnackbarProvider maxSnack={3}>
       <WalletProvider value={walletProviders}>
-        <div className=" flex justify-between items-center p-5 bg-[#2F3033] w-[100%]">
-          <div className="md:flex flex-initial justify-between items-center ">
-            <h1 className="text-[#C5EE4F] text-bold text-[25px]"> DAO WAKANDA</h1>
-
-            <ul className="flex cursor-pointer mx-20">
-              <li className="justify-between rounded-full py-2 px-7 mx-4 text-white hover:bg-[#919094]">Vote</li>
-              <li className="justify-between rounded-full py-2 px-7 mx-4 text-white hover:bg-[#919094]">Resources</li>
-              <li className="justify-between rounded-full py-2 px-7 mx-4 text-white hover:bg-[#919094]">Doc</li>
-              <li className="justify-between rounded-full py-2 px-7 mx-4 text-white hover:bg-[#919094]">About</li>
-            </ul>
-            <button
-              data-test-id="connect-wallet"
-              className="btn  md:flex hidden list-none flex-row justify-between items-center flex-initial rounded-full"
-              onClick={toggleWalletModal}
-            >
-              Connect Wallet
+        <div className="flex flex-col w-[100%] overflow-hidden">
+          <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
+          {/* <ConnectWallet openModal={true} closeModal={toggleWalletModal} /> */}
+          {/* {activeAddress && <div data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}></div>} */}
+          {/* {activeAddress && (
+            <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
+              Contract Interactions Demo
             </button>
+          )} */}
 
-            {/* {activeAddress && (
-              <button data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}>
-                Transactions Demo
-              </button>
-            )} */}
-
-            {/* {activeAddress && (
-              <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
-                Contract Interactions Demo
-              </button>
-            )} */}
-          </div>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/Governance" element={<Governance toggleWalletModal={toggleWalletModal} />} />
+            <Route path="/Communities" element={<Communities />} />
+            <Route path="/Developers" element={<Developers />} />
+            <Route path="/About" element={<About />} />
+          </Routes>
 
           <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
           <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />
           <AppCalls openModal={appCallsDemoModal} setModalState={setAppCallsDemoModal} />
         </div>
-        <Stake />
       </WalletProvider>
     </SnackbarProvider>
   )

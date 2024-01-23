@@ -89,11 +89,10 @@ const ProposalAccordion: React.FC<{ title: string }> = ({ title }) => {
         <AccordionDetails>
           <Box display={'flex'} justifyContent={'space-between'}>
             <Typography color={'#fff'} width={'70%'}>
-              Lorem ipsum dolor sit amet consectetur. Sed lacinia purus eget massa suspendisse pretium massa vitae vitae. Facilisi facilisi
-              massa sapien enim dignissim. Aliquet consectetur tortor urna id cursus tristique blandit faucibus at. Vitae enim lectus ipsum
-              dui tellus fermentum dolor laoreet viverra. Aliquam nisl purus egestas pellentesque tincidunt dui et pulvinar ipsum. Pretium
-              commodo ac vulputate erat eget nunc. Praesent non netus egestas ornare praesent mattis semper phasellus. Interdum pulvinar sed
-              ut sit ut gravida pharetra velit pulvinar. Odio bibendum duis faucibus at dolor elit orci.
+              In the heart of Agorand, Nigeria, a vibrant and inclusive community event is set to unfold, inviting residents, local
+              businesses, and organizations to come together in celebration and collaboration. this gathering aims to achieve a multifaceted
+              impact by fostering community engagement, providing educational opportunities, celebrating the rich cultural heritage of the
+              region, and creating a platform for meaningful networking.
             </Typography>
             <Box width={'25%'}>
               <VoterInfo />

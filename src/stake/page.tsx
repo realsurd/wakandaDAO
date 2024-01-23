@@ -46,22 +46,22 @@ const Stake: React.FC = () => {
         </Typography>
       </Box>
       <Box p={2.5} display={'flex'} justifyContent={'space-between'} mt={5}>
-        <Box flex={1.5}>
+        <Box flex={1.5} color={'#fff'}>
           <Typography variant="h5">Proposals</Typography>
         </Box>
         <Box display={'flex'} justifyContent={'space-between'} flex={1}>
           <Link href={'#'}>
-            <Typography>
+            <Typography color="#fff">
               <HistoryIcon /> History
             </Typography>
           </Link>
           <Link href={'#'}>
-            <Typography>
+            <Typography color="#fff">
               <ForumOutlinedIcon /> Forum
             </Typography>
           </Link>
           <Link href={'#'}>
-            <Typography>
+            <Typography color="#fff">
               <LiveHelpIcon /> FAQ
             </Typography>
           </Link>

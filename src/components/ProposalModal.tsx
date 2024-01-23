@@ -5,6 +5,57 @@ import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 import { TextField } from '@mui/material'
 
+import algosdk from 'algosdk'
+
+// Initialize Algorand client
+const algodClient = new algosdk.Algodv2('<api-token>', '<algod-server-url>', '<algod-port>')
+
+interface ProposalDetails {
+  title: string
+  description: string
+  startDate: number
+  endDate: number
+}
+
+async function submitProposal({ title, description, startDate, endDate }: ProposalDetails) {
+  try {
+    const params = await algodClient.getTransactionParams().do()
+    const senderAddress = '<user-address>' // Replace with the actual user address
+    const appID: number = 1 // Replace with your deployed app ID
+
+    // Prepare arguments for the smart contract call
+    const args: Uint8Array[] = [
+      algosdk.encodeObj({
+        title,
+        description,
+        startDate,
+        endDate,
+      }),
+    ]
+
+    const txn = algosdk.makeApplicationNoOpTxn(senderAddress, params, appID, args)
+    // Sign the transaction
+    // Note: Handle private keys securely
+    const privateKey = '<user-private-key>'
+    // Convert the private key string to Uint8Array
+    const secretKey = new Uint8Array(Buffer.from(algosdk.mnemonicToSecretKey(privateKey).sk))
+
+    // Sign the transaction
+    const signedTxn = algosdk.signTransaction(txn, secretKey)
+
+    // Send the transaction
+    // const sendTxn = await algodClient.sendRawTransaction(signedTxn).do();
+    const sendTxn = await algodClient.sendRawTransaction(signedTxn.blob).do()
+
+    // Optionally, wait for confirmation
+    // eslint-disable-next-line no-console
+    console.log('Transaction submitted with ID:', sendTxn.txId)
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Error submitting proposal:', error)
+  }
+}
+
 interface ProposalModalProps {
   open: boolean
   toggle: () => void
