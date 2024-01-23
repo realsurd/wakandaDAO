@@ -1,7 +1,76 @@
 {
+<<<<<<< HEAD
   // Use IntelliSense to learn about possible attributes.
   // Hover to view descriptions of existing attributes.
   // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": []
+=======
+  "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Run (Edge)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "presentation": {
+        "hidden": false,
+        "group": "2. Web"
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Run (Chrome)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "presentation": {
+        "hidden": false,
+        "group": "2. Web"
+      }
+    },
+    {
+      "type": "firefox",
+      "request": "launch",
+      "name": "Run (Firefox)",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}",
+      "presentation": {
+        "hidden": false,
+        "group": "2. Web"
+      }
+    },
+    {
+      "name": "Run dApp",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "presentation": {
+        "hidden": false,
+        "group": "1. Run Project",
+        "order": 1
+      }
+    },
+    {
+      "name": "Run dApp (+ LocalNet)",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "cwd": "${workspaceRoot}",
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**", "node_modules/**"],
+      "preLaunchTask": "Start AlgoKit LocalNet",
+      "presentation": {
+        "hidden": false,
+        "group": "1. Run Project",
+        "order": 1
+      }
+    }
+  ]
+>>>>>>> 5b82aebd4d3e7247d2d403c62f6250a432f322e7
 }

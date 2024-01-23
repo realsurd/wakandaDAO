@@ -7,4 +7,7 @@ indent_size = 2
 tab_width = 2
 max_line_length = 140
 trim_trailing_whitespace = true
+<<<<<<< HEAD
 single_quote = true
+=======
+>>>>>>> 5b82aebd4d3e7247d2d403c62f6250a432f322e7
