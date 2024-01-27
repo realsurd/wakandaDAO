@@ -11,10 +11,10 @@
 # production
 /build
 
-# # dependencies
-# /node_modules
-# /.pnp
-# .pnp.js
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
 
 # dotenv environment variable files

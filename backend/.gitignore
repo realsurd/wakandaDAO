@@ -6,10 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
-# # dependencies
-# /node_modules
-# /.pnp
-# .pnp.js
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
 # Distribution / packaging
 .Python
