@@ -1,15 +1,17 @@
 'use client'
 
-import StakeInfoCard from '../components/StakeInfoCard'
-import { Box, Button, Divider, OutlinedInput, Typography } from '@mui/material'
-import HistoryIcon from '@mui/icons-material/History'
 import ForumOutlinedIcon from '@mui/icons-material/ForumOutlined'
+import HistoryIcon from '@mui/icons-material/History'
 import LiveHelpIcon from '@mui/icons-material/LiveHelp'
+import { Box, Button, Divider, OutlinedInput, Typography } from '@mui/material'
 import Link from '@mui/material/Link'
-import { SearchBarMenu } from '../components/SearchBar'
-import ProposalAccordion from '../components/ProposalAccordion'
-import ProposalModal from '../modals/ProposalModal'
 import React, { useState } from 'react'
+import ProposalAccordion from '../components/ProposalAccordion'
+import { SearchBarMenu } from '../components/SearchBar'
+import StakeInfoCard from '../components/StakeInfoCard'
+import ProposalModal from '../modals/ProposalModal'
+// import { getAlgodConfigFromViteEnvironment, getKmdConfigFromViteEnvironment } from './utils/network/getAlgoClientConfigs'
+// import * as algokit from '@algorandfoundation/algokit-utils'
 
 const Stake: React.FC = () => {
   const menuItems: string[] = ['All', 'Projects', 'Users', 'Time', 'Action']
